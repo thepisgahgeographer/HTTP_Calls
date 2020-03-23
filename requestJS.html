@@ -1,0 +1,21 @@
+<h1 id="test">
+    Content Here
+</h1>
+
+<script>
+    fetch("https://services8.arcgis.com/IJcGtArxG8IPalnE/arcgis/rest/services/streams/FeatureServer/0/query?where=Displ_Name='Nettle Branch'&outFields=Displ_Name&returnGeometry=false&f=json")
+        .then((response) => {
+            return response.text();
+        })
+        .then((text) => {
+            let res = JSON.parse(text);
+            let respond = res.features[0].attributes.Displ_Name;
+            document.getElementById("test").innerHTML = respond;
+        })
+        .catch((error) => {
+            console.log('Request failed', error);
+        })
+
+
+
+</script>
